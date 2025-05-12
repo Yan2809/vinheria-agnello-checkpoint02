@@ -28,6 +28,7 @@ function mostrarDados(vinho) {
     
 }
 
+    console.log("Dados do Vinho:");
     console.log("Nome: " + vinho.nome);
     console.log("Tipo: " + vinho.tipo);
     console.log("Quantidade: " + vinho.quantidade);
@@ -38,3 +39,18 @@ function mostrarDados(vinho) {
     } else {
         console.log("Estoque suficiente.");
     }
+
+// LOOP DO CADASTRO
+let continuar = "s";
+let totalCadastros = 0;
+
+while (continuar === "s") {
+    
+    const nome = prompt("Digite o nome do vinho:");
+    const tipo = prompt("Digite o tipo do vinho:");
+    const safra = parseInt(prompt("Digite o ano da safra:"));
+    const quantidade = parseInt(prompt("Digite a quantidade em estoque:"));
+
+    continuar = prompt("Deseja cadastrar outro vinho? (s/n)").toLowerCase();
+}
+console.log("Total de vinhos cadastrados: " + totalCadastros);
