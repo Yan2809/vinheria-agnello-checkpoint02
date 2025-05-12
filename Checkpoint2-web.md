@@ -6,16 +6,13 @@
 
 ### 👥 Trabalho em Grupo
 
-- Cada integrante deve realizar **ao menos dois novos commits**, com mensagens claras
 - Código **organizado, indentado e comentado**
-- Reaproveite a ideia do CP01, mas partindo de um **novo repositório**
 
 ---
 
 ### 📤 Entrega
 
-- Criar um novo repositório no GitHub com o nome:  
-  **`vinheria-agnello-checkpoint02`**
+
 - Ativar o **GitHub Pages**
 - Enviar via **Microsoft Teams**:
   - Link do repositório no GitHub
@@ -42,7 +39,6 @@ Aprofundar os fundamentos do JavaScript com:
    - Para verificar se o estoque está baixo (menos de 5)
    - Para classificar o vinho (jovem, amadurecido, antigo)
    - Para mostrar os dados no console com aviso por `alert()`
-4. **Evite repetir código**: funções são obrigatórias.
 5. **Escopo deve ser respeitado**:
    - Variáveis declaradas dentro das funções devem ser usadas localmente
 6. Ao final, exiba:
