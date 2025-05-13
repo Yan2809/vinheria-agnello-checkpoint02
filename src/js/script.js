@@ -64,9 +64,15 @@ function validarEntrada(mensagem) {
     return valor;
 }
 
-// function estoqueBaixo{
+function estoqueBaixo(quantEstoque){
 
-// }
+    if (quantEstoque < 5) {
+    statusEstoque = "baixo";
+    } else {
+    statusEstoque = "normal";
+    }
+    return statusEstoque;
+}
 
 let nomeVinho;
 let tipoVinho;
