@@ -14,7 +14,7 @@ function validarEntrada(mensagem) {
 // Verificar situação do estoque
 function estoqueBaixo(quantidade){
     let statusEstoque;
-    if (quantidade < 5) {
+    if (parseInt(quantidade) < 5) {
         statusEstoque = "baixo";
     } else {
         statusEstoque = "normal";
@@ -26,9 +26,9 @@ function estoqueBaixo(quantidade){
 // Classificar o vinho (antigo, amadurecido, jovem)
 function classificarVinho(safra){
     let maturacao;
-    if (safra < 2015) {
+    if (parseInt(safra) < 2015) {
         maturacao = "Vinho antigo";
-    } else if (safra <= 2019) {
+    } else if (parseInt(safra) <= 2019) {
         maturacao = "Vinho amadurecido";
     } else {
         maturacao = "Vinho jovem";
@@ -65,6 +65,8 @@ let maturacao;
 
 let totalCadastros = 0;
 
+let continuar;
+
 do {
     // Contador do total de vinhos cadastrados
     totalCadastros += 1;
@@ -84,7 +86,7 @@ do {
     }
 
     // Verificação de qual vinho é o mais antigo
-    if (safraVinho < safraMaisAntiga){
+    if (parseInt(safraVinho) < safraMaisAntiga){
         safraMaisAntiga = safraVinho
         vinhoMaisAntigo = nomeVinho
     }
