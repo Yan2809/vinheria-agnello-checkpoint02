@@ -38,16 +38,16 @@ function classificarVinho(safra){
 }
 
 // Mostrar ficha técnica do vinho cadastrado
-function mostrarDados(nome, tipo, safra, quantidade, estoque, sazonamento){
+function mostrarDados(nome, tipo, safra, quantidade, estoque, sazonamento, indice){
     alert("A seguir, veja a ficha técnica do vinho no console.");
     console.log("===========================================");
     console.log("==== Ficha Técnica do Vinho Cadastrado ====");
-    console.log(`Nome do vinho: ${nome}`);
-    console.log(`Tipo do vinho: ${tipo}`);
-    console.log(`Ano da safra: ${safra}`);
-    console.log(`Quantidade em estoque: ${quantidade}`);
-    console.log(`Status do estoque: ${estoque}`);
-    console.log(`Estágio de maturação: ${sazonamento}`);
+    console.log(`Nome do vinho ${indice}: ${nome}`);
+    console.log(`Tipo do vinho ${indice}: ${tipo}`);
+    console.log(`Ano da safra do vinho ${indice}: ${safra}`);
+    console.log(`Quantidade em estoque do vinho ${indice}: ${quantidade}`);
+    console.log(`Status do estoque do vinho ${indice}: ${estoque}`);
+    console.log(`Estágio de maturação do vinho ${indice}: ${sazonamento}`);
 }
 
 let nomeVinho;
@@ -66,11 +66,14 @@ let maturacao;
 let totalCadastros = 0;
 
 do {
+    // Contador do total de vinhos cadastrados
+    totalCadastros += 1;
+
     // Cadastro do vinho usando a função de validação
-    nomeVinho = validarEntrada("Digite o nome do vinho a ser cadastrado:");
-    tipoVinho = validarEntrada("Qual o tipo do vinho?");
-    safraVinho = validarEntrada("Digite a safra do vinho:");
-    quantEstoque = validarEntrada("Quantos vinhos há em estoque?");
+    nomeVinho = validarEntrada(`Digite o nome do ${totalCadastros}° vinho a ser cadastrado:`);
+    tipoVinho = validarEntrada(`Qual o tipo do ${totalCadastros}° vinho?`);
+    safraVinho = validarEntrada(`Digite a safra do ${totalCadastros}° vinho:`);
+    quantEstoque = validarEntrada(`Qual a quantidade do vinho ${nomeVinho} no estoque?`);
 
     // Verificação do estoque usando a função de estoque baixo
     statusEstoque = estoqueBaixo(quantEstoque);
@@ -90,10 +93,7 @@ do {
     maturacao = classificarVinho(safraVinho);
 
     // Apresentação dos dados do vinho cadastrado através da função mostrar dados
-    mostrarDados(nomeVinho, tipoVinho, safraVinho, quantEstoque, statusEstoque, maturacao);
-
-    // Contador do total de vinhos cadastrados
-    totalCadastros += 1;
+    mostrarDados(nomeVinho, tipoVinho, safraVinho, quantEstoque, statusEstoque, maturacao, totalCadastros);
     
     // Permitindo cadastro de vários vinhos
     continuar = prompt("Deseja cadastrar outro vinho? (s/n)");
@@ -101,6 +101,8 @@ do {
 
 // Apresentação final, contendo quantidade de vinhos cadastrados, com estoque baixo e mais antigo
 alert("Visualize o console para verificar os vinhos cadastrados, quantidade de vinhos, quantos estão em estoque baixo e qual rótulo é o mais antigo")
+console.log("===========================================")
+console.log("==== Resumo do cadastro ====");
 console.log(`Foram cadastrados ${totalCadastros} vinhos`)
 console.log(`${totalEstoqueBaixo} vinhos tem estoque baixo`)
 console.log(`O vinho com a safra mais antiga é ${vinhoMaisAntigo} de ${safraMaisAntiga}`)
