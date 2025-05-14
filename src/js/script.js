@@ -72,28 +72,35 @@ do {
     safraVinho = validarEntrada("Digite a safra do vinho:");
     quantEstoque = validarEntrada("Quantos vinhos há em estoque?");
 
+    // Verificação do estoque usando a função de estoque baixo
     statusEstoque = estoqueBaixo(quantEstoque);
+
+    // Contador do total de vinhos com estoque baixo
     if (statusEstoque == "baixo"){
         totalEstoqueBaixo += 1;
     }
 
+    // Verificação de qual vinho é o mais antigo
     if (safraVinho < safraMaisAntiga){
         safraMaisAntiga = safraVinho
         vinhoMaisAntigo = nomeVinho
     }
 
+    // Verificação da maturação do vinho usando a função de classificar vinho
     maturacao = classificarVinho(safraVinho);
-    console.log(maturacao)
 
+    // Apresentação dos dados do vinho cadastrado através da função mostrar dados
     mostrarDados(nomeVinho, tipoVinho, safraVinho, quantEstoque, statusEstoque, maturacao);
 
+    // Contador do total de vinhos cadastrados
     totalCadastros += 1;
     
     // Permitindo cadastro de vários vinhos
     continuar = prompt("Deseja cadastrar outro vinho? (s/n)");
 } while (continuar == "s");
 
-
+// Apresentação final, contendo quantidade de vinhos cadastrados, com estoque baixo e mais antigo
+alert("Visualize o console para verificar os vinhos cadastrados, quantidade de vinhos, quantos estão em estoque baixo e qual rótulo é o mais antigo")
 console.log(`Foram cadastrados ${totalCadastros} vinhos`)
 console.log(`${totalEstoqueBaixo} vinhos tem estoque baixo`)
 console.log(`O vinho com a safra mais antiga é ${vinhoMaisAntigo} de ${safraMaisAntiga}`)
