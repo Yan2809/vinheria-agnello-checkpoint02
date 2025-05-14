@@ -1,57 +1,4 @@
-
-
-// function vinho(nome, tipo, safra, quantidade) {
-//     this.nome = nome;
-//     this.tipo = tipo;
-//     this.safra = safra;
-//     this.quantidade = quantidade;
-// }
-
-// function estoqueBaixo(quantidade) {
-//     // Para verificar se o estoque está baixo (menos de 5)
-//     return quantidade < 5;
-// }
-
-// function classificarVinho(ano) {
-//     // Para classificar o vinho (jovem, amadurecido, antigo)
-//     const anoAtual = 2025 
-//     const idade = anoAtual - ano;
-
-//     if (idade < 5) return "jovem";
-//     if (idade < 10) return "amadurecido";
-//     if (idade < 15) return "antigo";
-// }
-
-// function mostrarDados(vinho) {
-//     // Para mostrar os dados no console com aviso por `alert()`
-//     console.log("Dados do Vinho: ");
-    
-// }
-
-//     console.log("Dados do Vinho:");
-//     console.log("Nome: " + vinho.nome);
-//     console.log("Tipo: " + vinho.tipo);
-//     console.log("Quantidade: " + vinho.quantidade);
-//     console.log("Classificação: " + classificarVinho(vinho.safra));
-    
-//     if (estoqueBaixo(vinho.quantidade)) {
-//         console.log("Estoque baixo! Reabastecer.");
-//     } else {
-//         console.log("Estoque suficiente.");
-//     }
-
-
-
-
-// console.log("Total de vinhos cadastrados: " + totalCadastros);
-
-
-// // 3. Crie **funções reutilizáveis**:
-// // 
-// //    - Para verificar se o estoque está baixo (menos de 5)
-// //    - Para classificar o vinho (jovem, amadurecido, antigo)
-// //    - Para mostrar os dados no console com aviso por `alert()`
-
+// Validar entrada de dados do vinho
 function validarEntrada(mensagem) {
     let valor;
     do {
@@ -64,20 +11,57 @@ function validarEntrada(mensagem) {
     return valor;
 }
 
-function estoqueBaixo(quantEstoque){
-
-    if (quantEstoque < 5) {
-    statusEstoque = "baixo";
+// Verificar situação do estoque
+function estoqueBaixo(quantidade){
+    let statusEstoque;
+    if (quantidade < 5) {
+        statusEstoque = "baixo";
     } else {
-    statusEstoque = "normal";
+        statusEstoque = "normal";
     }
+
     return statusEstoque;
+}
+
+// Classificar o vinho (antigo, amadurecido, jovem)
+function classificarVinho(safra){
+    let maturacao;
+    if (safra < 2015) {
+        maturacao = "Vinho antigo";
+    } else if (safra <= 2019) {
+        maturacao = "Vinho amadurecido";
+    } else {
+        maturacao = "Vinho jovem";
+    }
+
+    return maturacao;
+}
+
+// Mostrar ficha técnica do vinho cadastrado
+function mostrarDados(nome, tipo, safra, quantidade, estoque, sazonamento){
+    alert("A seguir, veja a ficha técnica do vinho no console.");
+    console.log("===========================================");
+    console.log("==== Ficha Técnica do Vinho Cadastrado ====");
+    console.log(`Nome do vinho: ${nome}`);
+    console.log(`Tipo do vinho: ${tipo}`);
+    console.log(`Ano da safra: ${safra}`);
+    console.log(`Quantidade em estoque: ${quantidade}`);
+    console.log(`Status do estoque: ${estoque}`);
+    console.log(`Estágio de maturação: ${sazonamento}`);
 }
 
 let nomeVinho;
 let tipoVinho;
 let safraVinho;
 let quantEstoque;
+
+let statusEstoque;
+let totalEstoqueBaixo = 0;
+
+let vinhoMaisAntigo = "";
+let safraMaisAntiga = Infinity;
+
+let maturacao;
 
 let totalCadastros = 0;
 
@@ -88,14 +72,28 @@ do {
     safraVinho = validarEntrada("Digite a safra do vinho:");
     quantEstoque = validarEntrada("Quantos vinhos há em estoque?");
 
-    console.log(nomeVinho)
-    console.log(tipoVinho)
-    console.log(safraVinho)
-    console.log(quantEstoque)
+    statusEstoque = estoqueBaixo(quantEstoque);
+    if (statusEstoque == "baixo"){
+        totalEstoqueBaixo += 1;
+    }
+
+    if (safraVinho < safraMaisAntiga){
+        safraMaisAntiga = safraVinho
+        vinhoMaisAntigo = nomeVinho
+    }
+
+    maturacao = classificarVinho(safraVinho);
+    console.log(maturacao)
+
+    mostrarDados(nomeVinho, tipoVinho, safraVinho, quantEstoque, statusEstoque, maturacao);
+
+    totalCadastros += 1;
     
-    // Pode converter a quantidade para número se necessário:
-    // const quantidadeNumero = parseInt(quantidade);
-    
-    // Pergunta se deseja cadastrar outro vinho
+    // Permitindo cadastro de vários vinhos
     continuar = prompt("Deseja cadastrar outro vinho? (s/n)");
 } while (continuar == "s");
+
+
+console.log(`Foram cadastrados ${totalCadastros} vinhos`)
+console.log(`${totalEstoqueBaixo} vinhos tem estoque baixo`)
+console.log(`O vinho com a safra mais antiga é ${vinhoMaisAntigo} de ${safraMaisAntiga}`)
