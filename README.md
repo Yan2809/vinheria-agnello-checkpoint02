@@ -1,6 +1,6 @@
-**Projeto: NOME DO PROJETO**
+**Projeto: Vinharia Agnello Checkpoint02**
 
-- Descrição do projeto
+- Utilização do antigo sistema de cadastro e análise de maturação e estoque de vinhos da Vinheria Agnello, com implementação de funções e a possibilidade de cadastrar vários vinhos
 
 ### INTEGRANTES:    
              
@@ -12,12 +12,3 @@
 ### Link do GitHub Pages:
 
 -> 
-
-
-
-No arquivo `README.md`, incluir:
-- Nome do projeto  
-- Descrição do que foi implementado no Checkpoint 02  
-- Nome completo dos integrantes do grupo  
-- Link do GitHub Pages  
-- (Opcional) Imagem ou GIF de demonstração
